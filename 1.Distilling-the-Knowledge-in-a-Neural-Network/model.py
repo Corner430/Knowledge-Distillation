@@ -40,7 +40,7 @@ class Student(nn.Module):
         self.flatten = nn.Flatten()
         self.linear1 = nn.Linear(input_size ** 2, 1000)
         self.relu = nn.ReLU()
-        self.dropout = nn.Dropout(0.5)
+        self.dropout = nn.Dropout(0.3)
         self.linear2 = nn.Linear(1000, num_classes)
 
     def forward(self, X):
