@@ -8,14 +8,17 @@ class TeacherModel(nn.Module):
         super(TeacherModel, self).__init__()
         self.features = nn.Sequential(
             nn.Conv2d(1, 32, kernel_size=3, stride=1),
+            nn.BatchNorm2d(32),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2),
             nn.Dropout(dropout1),
             nn.Conv2d(32, 64, kernel_size=3, stride=1),
+            nn.BatchNorm2d(64),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2),
             nn.Dropout(dropout1),
             nn.Conv2d(64, 128, kernel_size=3, stride=1),
+            nn.BatchNorm2d(128),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2),
             nn.Dropout(dropout1),
@@ -23,6 +26,7 @@ class TeacherModel(nn.Module):
         self.classifier = nn.Sequential(
             nn.Flatten(),
             nn.Linear(128, 625),
+            nn.BatchNorm1d(625),
             nn.ReLU(),
             nn.Dropout(dropout2),
             nn.Linear(625, num_classes),

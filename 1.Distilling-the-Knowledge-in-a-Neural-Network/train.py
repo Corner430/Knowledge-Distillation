@@ -62,7 +62,7 @@ def train_distill(teacher, student, optimizer_student, criterion_student, trainl
 
             l_soft = F.cross_entropy(temperature_softmax(y_hat, temperature=2), temperature_softmax(y_teacher, temperature=2))
             l_hard = criterion_student(temperature_softmax(y_hat), y)
-            loss = l_soft + 0.5 * l_hard
+            loss = l_soft + 0.25 * l_hard
             
             optimizer_student.zero_grad()
             loss.backward()
