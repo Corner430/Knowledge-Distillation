@@ -1,0 +1,1 @@
+1. [FITNETS: Hints For Thin Deep Nets](1.FITNETS:Hints-for-thin-deep-nets.ipynb)
