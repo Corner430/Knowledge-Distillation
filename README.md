@@ -1,5 +1,7 @@
 ### 知识蒸馏（Knowledge Distillation）
 
+> model 文件夹下是一些已经训练好的 teacher 模型
+
 1. Basic knowledge: [Distilling the Knowledge in a Neural Network](1.Distilling-the-Knowledge-in-a-Neural-Network/index.md)
     - $ L_{soft}$ 可是看作是一种正则，使得模型减少过拟合
     - 知识蒸馏和直接从头训练区别在哪？
