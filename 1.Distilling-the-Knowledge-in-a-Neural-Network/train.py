@@ -1,51 +1,34 @@
 import torch
-import evaluate
+from evaluate import evaluate
 import torch.nn.functional as F
 
 def temperature_softmax(input_tensor, temperature=1.0):
     return torch.softmax(input_tensor / temperature, dim=1)
 
 
-# Define teacher training function
-def train_teacher(net, optimizer, criterion, trainloader, testloader, device, num_epochs=10):
-    for epoch in range(num_epochs):
-        net.train()	# Set model to training mode
-        running_loss = 0.0
-        for X, y in trainloader:
-            X = X.to(device)
-            y = y.to(device)
-            # y_hat = net(X)
-            y_hat = temperature_softmax(net(X))
-            loss = criterion(y_hat, y)
-            
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
-            running_loss += loss.item()
-        # if epoch % 5 == 5 - 1:
-        test_loss, accuracy = evaluate.evaluate_teacher(net, criterion, testloader, device)
-        print(f"Epoch {epoch + 1}, loss = {running_loss / len(trainloader)}, test_loss = {test_loss}, accuracy = {accuracy}")
-
-
 # Define student training function
-def train_student(net, optimizer, criterion, trainloader,testloader, device, num_epochs=10):
+def train_student(net, train_iter, test_iter, criterion, optimizer, device, num_epochs=10):
     for epoch in range(num_epochs):
-        net.train()	# Set model to training mode
-        running_loss = 0.0
-        for X, y in trainloader:
-            X = X.to(device)
-            y = y.to(device)
-            # y_hat = net(X)
-            y_hat = temperature_softmax(net(X))
-            loss = criterion(y_hat, y)
-            
+        runnning_loss = 0.0
+        running_acc = 0.0
+        for inputs, labels in train_iter:
+            inputs = inputs.to(device)
+            labels = labels.to(device)
+            outputs = net(inputs)
+            loss = criterion(outputs, labels)
+
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
-            running_loss += loss.item()
-        # if epoch % 5 == 5 - 1:
-        test_loss, accuracy = evaluate.evaluate_student(net, criterion, testloader, device)
-        print(f"Epoch {epoch + 1}, loss = {running_loss / len(trainloader)}, test_loss = {test_loss}, accuracy = {accuracy}")
+
+            runnning_loss += loss.item()
+            _, preds = torch.max(outputs, 1)
+            running_acc += (preds == labels).float().mean()
+        eval_loss, eval_acc = evaluate(net, test_iter, device)
+        print("epoch %d, loss %.4f, train acc %.3f, test loss %.4f, test acc %.3f" % (epoch + 1, runnning_loss / len(train_iter), running_acc / len(train_iter), eval_loss, eval_acc))
+        # torch.save(net.state_dict(), f"net_epoch{epoch + 1}.pth")
+
+    print("training finished")
 
 
 # Define distillation training function
@@ -54,6 +37,7 @@ def train_distill(teacher, student, optimizer_student, criterion_student, trainl
         teacher.eval()
         student.train()
         running_loss = 0.0
+        running_acc = 0.0
         for X, y in trainloader:
             X = X.to(device)
             y = y.to(device)
@@ -68,6 +52,10 @@ def train_distill(teacher, student, optimizer_student, criterion_student, trainl
             loss.backward()
             optimizer_student.step()
             running_loss += loss.item()
-        # if epoch % 5 == 5 - 1:
-        test_loss, accuracy = evaluate.evaluate_student(student, criterion_student, testloader, device)
-        print(f"Epoch {epoch + 1}, loss = {running_loss / len(trainloader)}, test_loss = {test_loss}, accuracy = {accuracy}")
+            _, preds = torch.max(y_hat, 1)
+            running_acc += (preds == y).float().mean()
+        eval_loss, eval_acc = evaluate(student, testloader, device)
+        print("epoch %d, loss %.4f, train acc %.3f, test loss %.4f, test acc %.3f" % (epoch + 1, running_loss / len(trainloader), running_acc / len(trainloader), eval_loss, eval_acc))
+        # torch.save(net.state_dict(), f"net_epoch{epoch + 1}.pth")
+
+    print("training finished")
