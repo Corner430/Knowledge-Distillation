@@ -47,7 +47,7 @@ optimizer_student_distill = optim.SGD(student_distill.parameters(), lr=0.07)
 # print(f"[Teacher] Test Loss: {teacher_loss}, Acc: {100. * teacher_acc}%")
 
 
-train.train_student(student, train_iter, test_iter, criterion_student, optimizer_student, device, num_epochs=150)
+train.train_student(student, train_iter, test_iter, criterion_student, optimizer_student, device, num_epochs=40)
 
 print("---------------" * 3)
 
@@ -59,5 +59,5 @@ train.train_distill(
     train_iter,
     test_iter,
     device,
-    num_epochs=150
+    num_epochs=60
 )

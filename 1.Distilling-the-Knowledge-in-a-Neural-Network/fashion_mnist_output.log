@@ -1,7 +1,0 @@
-epoch 1, loss 0.7407, train acc 0.752, test loss 0.7533, test acc 0.783
-epoch 2, loss 0.4881, train acc 0.832, test loss 0.4931, test acc 0.826
-epoch 3, loss 0.4394, train acc 0.848, test loss 0.4590, test acc 0.838
-epoch 4, loss 0.4091, train acc 0.857, test loss 0.5761, test acc 0.810
-epoch 5, loss 0.3904, train acc 0.864, test loss 0.4177, test acc 0.850
-epoch 6, loss 0.3757, train acc 0.870, test loss 0.4334, test acc 0.849
-epoch 7, loss 0.3633, train acc 0.873, test loss 0.3943, test acc 0.860
