@@ -37,6 +37,8 @@
     - compact
         - Parameter Binarization
         - Filter Pruning
+    - 代码用的Pytorch
+    - ONE 拥有一些正则的作用
 
 
 --------------------------
