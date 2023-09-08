@@ -24,5 +24,21 @@
     - **选择的 hint/guided layer 如果是卷积层，需要用卷积核来做 regressor，否则参数太多**
     - 参考作者预处理的方式
     - 效果甚至会比 teacher model 更好
+    - **对于 distill loss 的权重，可以使用一个衰减的方式**
 
 > **作者提出了另外四种架构，见原文，但是效果不如 FitNet**
+
+3. [Knowledge Distillation by On-the-Fly Native Ensemble](3.Knowledge-Distillation-by-On-the-Fly-Native-Ensemble/index.md)
+    - KD 是 two stage，ONE 是 one stage，DML 是 peer teach（缺乏一个权威的teacher）
+    - grouped convolution
+    - 使用 **Gate 集成** 而不是使用 **平均集成** , 并共享底层，用来控制每个branch的权重
+    - KL divergence 的使用
+    - 为什么 ONE 的泛化性能更好？
+    - compact
+        - Parameter Binarization
+        - Filter Pruning
+
+
+--------------------------
+TODO
+- Deep Mutual Learning(DML)
