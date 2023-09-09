@@ -38,9 +38,19 @@
         - Parameter Binarization
         - Filter Pruning
     - 代码用的Pytorch
-    - ONE 拥有一些正则的作用
+    - **ONE 拥有一些正则的作用**
 
-
---------------------------
-TODO
-- Deep Mutual Learning(DML)
+4. [Deep Mutual Learning](4.Deep-Mutual-Learning/index.md)
+    - **dataset: CIFAR-100, Market-1501**
+    - **不要 teacher-student，要 peer-to-peer。甚至效果更优**
+    - 前人表明小模型可以和大模型达到相同的能力，**真正的难点在于网络的优化，而不是网络的规模**
+    - 当 peer-to-peer时，**在所有小型和未经训练的学生网络的情况下，额外的知识从哪来？**
+    - **为什么可以收敛到一个不错的解**，而不是 'the blind lead the blind'？
+    - **一言以蔽之，student 的初始值不同，后验熵被增加，所以 work**
+    - **网络越多，效果越好**
+    - 可以混合大小异构网络
+    - **蒸馏本质上就是增加 后验熵和进行正则**
+    - **DML 的目的不是产生多样化的集成，而是让 student 之间尽可能的相似，这一点很难通过传统的监督学习完成**
+    - **不使用温度系数**
+    - 作者提出了一个替代方案，效果不如原始方案，**原因和高后验熵有关系**
+    - 代码使用 Tensorflow 实现，具体实现细节见原文
