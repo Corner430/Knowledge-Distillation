@@ -55,7 +55,7 @@
     - 代码用的Pytorch
     - **ONE 拥有一些正则的作用**
 
-5. [Collaborative Learning for Deep Neural Networks](5.Collaborative-Learning-for-Deep-Neural-Networks/index.md)
+5. [Collaborative Learning for Deep Neural Networks](5.Collaborative-Learning-for-Deep-Neural-Networks/index.md)    (CL-ILR)
 
 6. [Online knowledge Distillation with Diveres Peers](6.Online-knowledge-Distillation-with-Diverse-Peers/index.md)  (OKDDip)
     - dataset: CIFAR-10, CIFAR-100, ImageNet-2012
@@ -66,3 +66,8 @@
     - **非对称性给了 不太好的模型向好的模型去学习，好的模型不被不好的模型拉下水 的可能性**
     - 不同时期的 *group leader* 可以有不同的计算方式
     - *branch-based or network-based student models*
+    - *[code](https://github.com/DefangChen/OKDDip-AAAI2020)*
+    - 一般而言，*network-based* 的效果比 *branch-based* 的效果要好, 因为它们有着更多独立参数，使得 *peer* 更加多样性
+    - *Homogenization problem tends to become more severe for dealing with easier dataset.*
+    - **计算 peer 多样性**
+    - **peer 多样性导致了 更好的 ensemble 效果**
