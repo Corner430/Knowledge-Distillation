@@ -28,19 +28,7 @@
 
 > **作者提出了另外四种架构，见原文，但是效果不如 FitNet**
 
-3. [Knowledge Distillation by On-the-Fly Native Ensemble](3.Knowledge-Distillation-by-On-the-Fly-Native-Ensemble/index.md)
-    - KD 是 two stage，ONE 是 one stage，DML 是 peer teach（缺乏一个权威的teacher）
-    - grouped convolution
-    - 使用 **Gate 集成** 而不是使用 **平均集成** , 并共享底层，用来控制每个branch的权重
-    - KL divergence 的使用
-    - 为什么 ONE 的泛化性能更好？
-    - compact
-        - Parameter Binarization
-        - Filter Pruning
-    - 代码用的Pytorch
-    - **ONE 拥有一些正则的作用**
-
-4. [Deep Mutual Learning](4.Deep-Mutual-Learning/index.md)
+3. [Deep Mutual Learning](3.Deep-Mutual-Learning/index.md)
     - **dataset: CIFAR-100, Market-1501**
     - **不要 teacher-student，要 peer-to-peer。甚至效果更优**
     - 前人表明小模型可以和大模型达到相同的能力，**真正的难点在于网络的优化，而不是网络的规模**
@@ -54,3 +42,20 @@
     - **不使用温度系数**
     - 作者提出了一个替代方案，效果不如原始方案，**原因和高后验熵有关系**
     - 代码使用 Tensorflow 实现，具体实现细节见原文
+
+4. [Knowledge Distillation by On-the-Fly Native Ensemble](4.Knowledge-Distillation-by-On-the-Fly-Native-Ensemble/index.md)
+    - KD 是 two stage，ONE 是 one stage，DML 是 peer teach（缺乏一个权威的teacher）
+    - grouped convolution
+    - 使用 **Gate 集成** 而不是使用 **平均集成** , 并共享底层，用来控制每个branch的权重
+    - KL divergence 的使用
+    - 为什么 ONE 的泛化性能更好？
+    - compact
+        - Parameter Binarization
+        - Filter Pruning
+    - 代码用的Pytorch
+    - **ONE 拥有一些正则的作用**
+
+
+5. [Online knowledge Distillation with Diveres Peers](5.Online-knowledge-Distillation-with-Diverse-Peers/index.md)
+    - KD 并不总是可用
+    - 最近提出的在线蒸馏可以让学生之间相互学习，并摒弃 teacher network，**问题在于过早的造成了学生之间的相似饱和**
