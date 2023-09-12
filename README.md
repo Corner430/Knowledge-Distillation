@@ -56,6 +56,13 @@
     - **ONE 拥有一些正则的作用**
 
 5. [Collaborative Learning for Deep Neural Networks](5.Collaborative-Learning-for-Deep-Neural-Networks/index.md)    (CL-ILR)
+    - **同一网络的多个分类器头同时在相同的训练数据上进行训练。**
+    - 协作学习的**两个关键机制：**
+        - 第一，多个分类器头对相同示例的多个视图一致性提供了额外信息，**同时对每个分类器进行了正则化**，以提高泛化能力。
+        - 第二，通过中间级表示（ILR）共享和反向传播重新缩放，**汇总了来自所有头部的梯度流**，降低了训练的计算复杂性，**同时有助于监督共享层。**
+    - 数据集：*CIFAR, ImageNet*
+    - *Backpropagation rescaling*
+    - 代码使用 *Tensorflow* 实现
 
 
 6. [Online knowledge Distillation with Diveres Peers](6.Online-knowledge-Distillation-with-Diverse-Peers/index.md)  (OKDDip)
