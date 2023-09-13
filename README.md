@@ -79,3 +79,20 @@
     - *Homogenization problem tends to become more severe for dealing with easier dataset.*
     - **计算 peer 多样性**
     - **peer 多样性导致了 更好的 ensemble 效果**
+
+7. [Peer Collaborative Learning for Online Knowledge Distillation](7.Peer-Collaborative-Learning-for-Online-Knowledge-Distillation/index.md)    (PCL)
+    - 数据集：*CIFAR-10, CIFAR-100 and ImageNet*
+    - *CL-ILR and DML* 没有 ensemble teacher, *OKDDip* 没有 *Collaborative Learning*, *PCL* 提出一个统一的框架，将 *online ensembling* 和 *network collaboration* 融合成一个统一的框架
+    - *Meanwhile, we employ the **temporal mean model of each peer as the peer mean teacher** to collaboratively transfer knowledge among peers, which helps each peer to learn richer knowledge and facilitates to optimise a more stable model with better generalisation*
+    - *peer ensemble teacher* 的 ensemble 方法
+    - temporal ensemble
+    - > *The recent trend in neural network ensembling focuses on **training a single model** and exploiting different **training phases** of a model as an ensemble*
+    - 此处的 *Online Ensembling* 采用的不是 *attention* 的方式，而是采用 *concat* 的方式，然后使用一个 *classifier* 进行分类
+
+~~**二者结合一下会不会效果更好呢？**~~
+
+
+
+---------------------------
+TODO
+TEMPORAL ENSEMBLING FOR SEMI-SUPERVISEDLEARNING
