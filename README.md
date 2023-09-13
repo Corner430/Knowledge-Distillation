@@ -87,9 +87,12 @@
     - *peer ensemble teacher* 的 ensemble 方法
     - temporal ensemble
     - > *The recent trend in neural network ensembling focuses on **training a single model** and exploiting different **training phases** of a model as an ensemble*
-    - 此处的 *Online Ensembling* 采用的不是 *attention* 的方式，而是采用 *concat* 的方式，然后使用一个 *classifier* 进行分类
-
-~~**二者结合一下会不会效果更好呢？**~~
+    - 此处的 *Online Ensembling* 采用的不是 *attention* 的方式，而是采用 *concat* 的方式，然后使用一个 *classifier* 进行分类~~**二者结合一下会不会效果更好呢？**~~
+    - $\mathcal{L}_{pe}$ **所占的权重逐步增加**，也就是说一开始不要太听 *teacher* 的话，然后逐步增加听 *teacher* 的话，**详见原文**
+    - *Peer Mean Teacher* 使用了 *temporal mean model*，也就是说使用了 *exponential moving average*，因此不需要使用反向传播进行 *update*，**详见原文**
+    - 这里的每一个 *peer* 都要和除了自己生成的那个之外的所有的 *peer mean teacher* 进行计算 KL 散度
+    - code: [OKDDip](https://github.com/DefangChen/OKDDip-AAAI2020), [ONE](https://github.com/Lan1991Xu/ONE_NeurIPS2018)
+    - *peer ensemble teacher* 提高泛化结果，*peer mean teacher* 使得结果最稳定
 
 
 
