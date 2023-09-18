@@ -34,7 +34,7 @@
     - 数据集：*CIFAR-10*、*CIFAR-100*、*ImageNet*
     - [code](https://github.com/imirzadeh/Teacher-Assistant-KnowledgeDistillation)，作者已删除仓库
 
-1. [Deep Mutual Learning](4.Deep-Mutual-Learning/index.md) (DML)
+4. [Deep Mutual Learning](4.Deep-Mutual-Learning/index.md) (DML)
     - **dataset: CIFAR-100, Market-1501**
     - **不要 teacher-student，要 peer-to-peer。甚至效果更优**
     - 前人表明小模型可以和大模型达到相同的能力，**真正的难点在于网络的优化，而不是网络的规模**
@@ -49,7 +49,7 @@
     - 作者提出了一个替代方案，效果不如原始方案，**原因和高后验熵有关系**
     - 代码使用 Tensorflow 实现，具体实现细节见原文
 
-2. [Knowledge Distillation by On-the-Fly Native Ensemble](5.Knowledge-Distillation-by-On-the-Fly-Native-Ensemble/index.md)  (ONE)
+5. [Knowledge Distillation by On-the-Fly Native Ensemble](5.Knowledge-Distillation-by-On-the-Fly-Native-Ensemble/index.md)  (ONE)
     - KD 是 two stage，ONE 是 one stage，DML 是 peer teach（缺乏一个权威的teacher）
     - grouped convolution
     - 使用 **Gate 集成** 而不是使用 **平均集成** , 并共享底层，用来控制每个branch的权重
@@ -61,7 +61,7 @@
     - 代码用的Pytorch
     - **ONE 拥有一些正则的作用**
 
-3. [Collaborative Learning for Deep Neural Networks](6.Collaborative-Learning-for-Deep-Neural-Networks/index.md)    (CL-ILR)
+6. [Collaborative Learning for Deep Neural Networks](6.Collaborative-Learning-for-Deep-Neural-Networks/index.md)    (CL-ILR)
     - **同一网络的多个分类器头同时在相同的训练数据上进行训练。**
     - 协作学习的**两个关键机制：**
         - 第一，多个分类器头对相同示例的多个视图一致性提供了额外信息，**同时对每个分类器进行了正则化**，以提高泛化能力。
