@@ -29,7 +29,7 @@
 > **作者提出了另外四种架构，见原文，但是效果不如 FitNet**
 
 3. [Improved Knowledge Distillation via Teacher Assistant](3.Improved-Knowledge-Distillation-via-Teacher-Assistant/index.md)    (TAKD)
-    - **KD 并不是总是有效，当 teacher 和 student 的差距过大时，结果就差强人意**。这个应该是模型容量的问题。也就是说，*student* 并不会随着 *teacher* 的增强而增强，是一个先增强后减弱的过程**
+    - **KD 并不是总是有效，当 teacher 和 student 的差距过大时，结果就差强人意**。这个应该是模型容量的问题。也就是说，*student* 并不会随着 *teacher* 的增强而增强，是一个先增强后减弱的过程
     - 为解决这个问题，作者提出，在 teacher 和 student 给定的情况下，应该有一个合适的 *assistant*，来帮助 *student* 学习
     - 数据集：*CIFAR-10*、*CIFAR-100*、*ImageNet*
     - [code](https://github.com/imirzadeh/Teacher-Assistant-KnowledgeDistillation)，作者已删除仓库
@@ -105,3 +105,19 @@
 ---------------------------
 TODO
 TEMPORAL ENSEMBLING FOR SEMI-SUPERVISEDLEARNING
+
+-----------------------------
+总结
+
+- KD 在分类上引入了 teacher-student 的蒸馏方式，开创了 蒸馏学习。
+- FITNETS 学习中间结果，相当于做了一个强正则，使得起点空间更好，之后再进行蒸馏学习，效果更好。
+- TAKD 指出当 teacher 和 student 的差距过大时，KD 效果不好，因此需要一个合适的 assistant 来帮助 student 学习。
+- DML 指出 蒸馏本质上就是在增加后验熵和做正则，那么我们就可以不要 teacher-student，而是 peer-to-peer，效果更好。
+- ONE 指出 DML 缺乏 teacher，teacher 的作用又是很重要的，因此提出了一个 gate 集成的方式，同时共享底层，效果更好。
+- CL-ILR 使用协作学习，并在 peer 之间通过蒸馏进行学习，类比 n 个学生 n 个群聊。相当于是teacher-student 和 peer-to-peer 的结合。**顺便提出并解决了反向梯度重分配的问题**
+- OKDDip 说前面的 peer 都会很早就 Homogenization，OKDDip 通过 attention 个性化 teacher model，实现一对一专职教学。而且有一个 Group leader，相当于一个班长，汇总大家的想法。
+- PCL 是每个人有一个老师，还有一个大老师。大家相互之间也进行学习。OKDDip 也有类似的思想
+
+
+
+> 不难构思，通过 attention 为大家构建一对一导师，再组成大导师，让大导师也教授知识。同时兼顾 peer-to-peer，但是并不是每个 peer 都要听从其它所有 peer 的意见，我们可以通过 attention 机制对 peer 加以权重的学习
