@@ -121,3 +121,11 @@ TEMPORAL ENSEMBLING FOR SEMI-SUPERVISEDLEARNING
 
 
 > 不难构思，通过 attention 为大家构建一对一导师，再组成大导师，让大导师也教授知识。同时兼顾 peer-to-peer，但是并不是每个 peer 都要听从其它所有 peer 的意见，我们可以通过 attention 机制对 peer 加以权重的学习
+
+---------------------------------------
+9. [Curriculum Temperature for Knowledge Distillation](9.Curriculum-Temperature-for-Knowledge-Distillation/index.md)    (CTKD)
+- 关注 temperature 的重要性，并提出了一个简单的方法来动态调整 temperature，从而提高蒸馏的性能。
+- 引入了一个 curriculum 来逐步提高学习难度，从而提高蒸馏的性能。
+- 引入了 梯度反转层（GRL） 来实现对抗训练，从而提高蒸馏的性能。
+- 引入了两种温度模块（Global-T 和 Instance-T），从而提高蒸馏的性能。
+- dataset: CIFAR-100, ImageNet, MS-COCO。**但没有代码**
