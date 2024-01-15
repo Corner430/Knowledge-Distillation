@@ -3,6 +3,7 @@
 > model 文件夹下是一些已经训练好的 teacher 模型
 
 1. Basic knowledge: [Distilling the Knowledge in a Neural Network](1.Distilling-the-Knowledge-in-a-Neural-Network/index.md) (KD)
+    - [code](https://github.com/shriramsb/Distilling-the-Knowledge-in-a-Neural-Network?tab=readme-ov-file)
     - $ L_{soft}$ 可是看作是一种正则，使得模型减少过拟合
     - 知识蒸馏和直接从头训练区别在哪？
         - 收敛的形式不一样，大模型的隐藏层比较复杂，搜索的空间比较大，收敛的位置更平滑，也就是得到的解空间更优美。让大模型指导小模型，能让二者的解空间尽量逼近，收敛的位置尽量接近。**说句专业的话，就是让二者的模型参数之间的散度尽量小。**

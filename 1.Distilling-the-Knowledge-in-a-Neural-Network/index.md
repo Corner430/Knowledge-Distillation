@@ -1,6 +1,4 @@
 1. [知识蒸馏](1.知识蒸馏.ipynb)
-2. [Fashion mnist code](2.fashion_mnist_main.ipynb)
-3. [MNIST code](3.mnist_main.ipynb)
 
 - **`distill`时候的学习率要给大一些**
 - 调节合适的温度
